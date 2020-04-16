@@ -4,14 +4,18 @@ $standard_width  = 800;
 $standard_height = 400;
 $max_image_size  = 1000 * 1000;
 
-$width  = round($_GET["width"])  ?? $standard_width;
-$height = round($_GET["height"]) ?? $standard_height;
+$width  = $_GET["width"]  ?? $standard_width;
+$height = $_GET["height"] ?? $standard_height;
 
 // Check if input is a number
 if (!is_numeric($width) || !is_numeric($height)) {
     echo "Size has to be numeric!";
     exit();
 }
+
+// Make sure they are ints
+$width = round($width);
+$height = round($height);
 
 // Check if both are positive
 if ($width < 1 || $height < 1) {
@@ -44,7 +48,7 @@ if ($width > $height * 1.3) {
     imagettftext($im, $height / 4, 0, $left, $top, $textcolor, $font, $text);
 } else {
     if ($width > $height * 0.8) {
-        // Edgecase (image nearly cube)
+        // Edgecase (image nearly square)
         $letter_height = $width / 5;
         $left          = $width / 3.7;
         $x_left        = $width / 2.3;
