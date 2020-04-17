@@ -58,7 +58,7 @@ if ($width > $height * 1.3) {
         $left          = $width / 8;
         $x_left        = $width / 2.5;
     }
-    $text_size       = $width;
+    
     $xheight         = $letter_height * 1.2;
     $letter_distance = $letter_height / 15;
     $top             = ($height - (2 * $letter_distance + $xheight)) / 2;
